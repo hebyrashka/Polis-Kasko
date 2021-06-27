@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		* {
+			font-family: sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		form {
+			display: flex;
+			height: 400px;
+			width: 400px;
+			overflow: hidden;
+			margin-left: 10px;
+		}
+		select {
+			background: none;
+			outline: none;
+			border: none;
+			background: rgba(220,220,220, 0.5);
+			border-bottom: 1px solid black;
+			width: 400px;
+			height: 40px;
+			margin: 0 auto;
+		}
+		button {
+			background: rgb(38, 148, 243);
+			border-radius: 5px;
+			color: white;
+			outline: none;
+			border: none;
+			width: 122px;
+			height: 35px;
+			font-size: 16px;
+		}
+		button:hover {
+			cursor: pointer;
+		}
+		option {
+			background: white;
+			height: 40px;
+		}
+		@keyframes hidden {
+			0% {
+				opacity: 100%;
+			}
+			100% {
+				opacity: 0%;
+			}
+		}
+		.question {
+			position: relative;
+			text-align: center;
+			width: 400px;
+		}
+		.active {
+			display: block;
+		}
+		.hidden {
+			animation: hidden 1s;
+		}
+		.question-title {
+			float: left;
+		}
+		.question-select {
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		.question-next {
+			float: right;
+		}
+		#question-agree {
+			display: block;
+			margin-bottom: 10px;
+		}
+		.question-next {
+			margin-left: 10px;
+		}
+		#question-agree-checkbox {
+			margin-right: 10px;
+		}
+		#slider {
+			transition: 1s;
+			position: relative;
+			display: flex;
+			text-align: center;
+		}
+		#title {
+			margin-bottom: 20px;
+		}
+		#buttons {
+			display: flex;
+			float: right;
+		}
+		.wrapper {
+			width: 400px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+	<h2 id="title">Проверка ТС</h2>
+<form >
+	<div id="slider">
+		<div class="question">
+			<p class="question-title">Выберите марку вашей машины</p>
+			<select class="question-select">
+				<option>Toyota</option>
+				<option>Kia</option>
+			</select>
+			<label id="question-agree"><input id="question-agree-checkbox" type="checkbox">Я согласен со всеми условиями</label>
+			<button type="button" class="question-next" id="next">Далее</button>
+		</div>
+		<div class="question">
+			<p class="question-title">А какая модель?</p>
+			<select class="question-select">
+				<option>Toyota</option>
+				<option>Kia</option>
+			</select>
+			<div id="buttons">
+				<button type="button" class="question-back">Назад</button>
+				<button type="button" class="question-next">Далее</button>
+			</div>
+		</div>
+		<div class="question">
+			<p class="question-title">Выберите ваш город</p>
+			<select class="question-select">
+				<option>Toyota</option>
+				<option>Kia</option>
+			</select>
+			<div id="buttons">
+			<button type="button" class="question-back">Назад</button><button type="button" class="question-next">Далее</button>
+			</div>
+		</div>
+		<div class="question">
+			<p class="question-title">Отлично! Вы можете принять участие в акции!</p>
+			<button type="submit">ОФОРМИТЬ ПОЛИС КАСКО</button>
+		</div>
+	</div>
+</form>
+</div>
+</body>
+<script type="text/javascript">
+	let questions = document.getElementsByClassName('question');
+
+	let back = document.getElementsByClassName('question-back');
+	let next = document.getElementsByClassName('question-next');
+	let slider = document.getElementById('slider');
+
+	let slideTrue = false;
+
+	let currentSlide = 0;
+
+	/*for (let i = 0; i < questions.length; i++) {
+		questions[i].style.left = 100 * i + '%';
+		console.log(100 * i);
+	}*/
+
+	next[0].onclick = function() {
+		questions[currentSlide].classList.add('hidden');
+		currentSlide++;
+		slider.style.right = currentSlide * 400 + 'px';
+		questions[currentSlide].classList.remove('hidden');
+	};
+	next[1].onclick = function() {
+		questions[currentSlide].classList.add('hidden');
+		currentSlide++;
+		slider.style.right = currentSlide * 400 + 'px';
+		questions[currentSlide].classList.remove('hidden');
+	};
+	next[2].onclick = function() {
+		questions[currentSlide].classList.add('hidden');
+		currentSlide++;
+		slider.style.right = currentSlide * 400 + 'px';
+		questions[currentSlide].classList.remove('hidden');
+	};
+	back[0].onclick = function() {
+		questions[currentSlide].classList.add('hidden');
+		currentSlide--;
+		slider.style.right = currentSlide * 400 + 'px';
+		questions[currentSlide].classList.remove('hidden');
+	};
+	back[1].onclick = function() {
+		questions[currentSlide].classList.add('hidden');
+		currentSlide--;
+		slider.style.right = currentSlide * 400 + 'px';
+		questions[currentSlide].classList.remove('hidden');
+	};
+</script>
+</html>
